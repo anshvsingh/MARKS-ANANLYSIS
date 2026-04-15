@@ -1,13 +1,13 @@
 import numpy as np   # Import numpy for matrix operations
 from numpy.linalg import matrix_rank, eig, inv   # Import functions for rank, eigenvalues, inverse
 
-print("\n================= MINI PROJECT =================")
+print("\n          MINI PROJECT          ")
 print("Title: Student Marks Analysis Using Matrices")
 print("===============================================")
 
-# ==================================================
+
 # REAL WORLD DATA
-# ==================================================
+
 print("\n🔷 REAL WORLD DATA")
 
 # Create matrix of student marks
@@ -21,17 +21,17 @@ A = np.array([
 
 print("Student Marks Matrix:\n", A)   # Display matrix
 
-# ==================================================
+
 # MATRIX REPRESENTATION
-# ==================================================
+
 print("\n🔷 MATRIX REPRESENTATION")
 
 print("Rows → Students, Columns → Subjects")   # Explain structure
 print("Matrix Shape:", A.shape)               # Show dimensions
 
-# ==================================================
+
 # MATRIX SIMPLIFICATION (RREF)
-# ==================================================
+
 print("\n🔷 MATRIX SIMPLIFICATION (RREF)")
 
 # Function to convert matrix into RREF (simplified form)
@@ -63,9 +63,9 @@ def rref(matrix):
 
 print("RREF Matrix:\n", rref(A))   # Print simplified matrix
 
-# ==================================================
+
 # STRUCTURE OF SPACE
-# ==================================================
+
 print("\n🔷 STRUCTURE OF SPACE")
 
 rank = matrix_rank(A)   # Rank = number of independent subjects
@@ -74,9 +74,9 @@ nullity = A.shape[1] - rank   # Nullity = dependent subjects
 print("Rank:", rank)
 print("Nullity:", nullity)
 
-# ==================================================
+
 # REMOVE REDUNDANCY
-# ==================================================
+
 print("\n🔷 REMOVE REDUNDANCY")
 
 # Check if subjects are independent or redundant
@@ -85,9 +85,9 @@ if nullity == 0:
 else:
     print("Some subjects are redundant.")
 
-# ==================================================
+
 # ORTHOGONALIZATION
-# ==================================================
+
 print("\n🔷 ORTHOGONALIZATION (Gram-Schmidt)")
 # Function to make vectors perpendicular (orthogonal)
 
@@ -109,9 +109,8 @@ def gram_schmidt(A):       #overlaping to non overlaping
 Q = gram_schmidt(A)   # Compute orthogonal basis
 print("Orthogonal Basis:\n", Q)
 
-# ==================================================
 # PROJECTION
-# ==================================================
+
 print("\n🔷 PROJECTION") # closest representation of data
 
 b = A[:, 0]   # take one subject (first column)
@@ -121,9 +120,9 @@ projection = Q @ Q.T @ b   #closest version of data b
 
 print("Projection Result:\n", projection)
 
-# ==================================================
+
 # PREDICTION (LEAST SQUARES)
-# ==================================================
+
 print("\n🔷 PREDICTION / APPROXIMATION (Least Squares)")
 
 A_ls = A[:, :2]   # First 2 subjects (inputs)
@@ -138,9 +137,9 @@ predicted = new_student @ x   # Predict Chemistry marks
 
 print("Predicted Chemistry Mark:", predicted)
 
-# ==================================================
+
 # PATTERN DISCOVERY (EIGENVALUES)
-# ==================================================
+
 print("\n🔷 PATTERN DISCOVERY (Eigenvalues & Eigenvectors)")
 
 cov_matrix = np.cov(A.T)   # Covariance matrix (relationships between subjects)
@@ -157,9 +156,9 @@ percentages = (eigenvalues / total) * 100
 
 print("\nEigenvalue Percentages (%):\n", percentages)
 
-# ==================================================
+
 # SYSTEM SIMPLIFICATION
-# ==================================================
+
 print("\n🔷 SYSTEM SIMPLIFICATION")
 
 dominant_index = np.argmax(eigenvalues)   # Index of largest eigenvalue
@@ -167,9 +166,9 @@ dominant_index = np.argmax(eigenvalues)   # Index of largest eigenvalue
 print("Dominant Eigenvalue:", eigenvalues[dominant_index])
 print("Dominant Pattern Contribution: {:.2f}%".format(percentages[dominant_index]))
 
-# ==================================================
+
 # FINAL APPLICATION OUTPUT
-# ==================================================
+
 print("\n🔷 FINAL APPLICATION OUTPUT")
 
 print("✔ Student performance analyzed")
@@ -177,9 +176,9 @@ print("✔ Independent subjects identified")
 print("✔ Missing marks predicted")
 print("✔ Patterns discovered using eigenvalues")
 
-# ==================================================
+
 # AVERAGE ANALYSIS
-# ==================================================
+
 print("\n🔷 FINAL PERFORMANCE ANALYSIS")
 
 averages = np.mean(A, axis=1)   # Average marks of each student
@@ -195,4 +194,4 @@ for i, avg in enumerate(averages):
     else:
         print("Performance: Needs Improvement ⚠️")
 
-print("\n==================== END ====================")
+print("\n          END          ")
