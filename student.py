@@ -3,7 +3,7 @@ from numpy.linalg import matrix_rank, eig, inv   # Import functions for rank, ei
 
 print("\n          MINI PROJECT          ")
 print("Title: Student Marks Analysis Using Matrices")
-print("===============================================")
+print("                                  ")
 
 
 # REAL WORLD DATA
